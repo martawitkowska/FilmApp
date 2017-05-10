@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#33408e</color>
+    <color name="colorPrimaryDark">#2b3369</color>
+    <color name="colorAccent">#ffe033</color>
+
+    <color name="ratingBackgroundColor">#596193</color>
+    <color name="year">#878787</color>
+    <color name="title">#222222</color>
+
+</resources>

@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">Films</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Toasts -->
+    <string name="to_see_true">Have you already seen this movie?\nRate it!</string>
+    <string name="to_see_false_1">You have added "</string>
+    <string name="to_see_false_2">" on your to-see list</string>
+
+
+    <!-- Film titles -->
+    <string name="title_walle">Wall-e</string>
+    <string name="title_csl">Crazy, Stupid, Love</string>
+    <string name="title_httyd">How to train your dragon 2</string>
+    <string name="title_hercules">Hercules</string>
+    <string name="title_pitch_perfect">Pitch Perfect 2</string>
+    <string name="title_el_dorado">The Road to El Dorado</string>
+    <string name="title_godfather">Godfather</string>
+    <string name="title_zoo">Zootopia</string>
+    <string name="title_hoc">House of Cards (series)</string>
+    <string name="title_legally_blonde">Legally Blonde</string>
+    <string name="title_mulan">Mulan</string>
+    <string name="title_narnia">The Chronicles of Narnia: The Lion, the Witch and the Wardrobe</string>
+    <string name="title_easy_a">Easy A</string>
+    <string name="title_lion_king">Lion King</string>
+    <string name="title_up">Up</string>
+    <string name="title_treasure">Treasure Planet</string>
+    <string name="title_inside_out">Inside out</string>
+    <string name="title_asterix">Asterix and Obelix: Mission Cleopatre</string>
+    <string name="title_shrek">Shrek 2</string>
+    <string name="title_moana">Moana</string>
+
+    <!-- Film genres -->
+    <!--
+    an - animation
+    ad - adventure
+    co - comedy
+    dr - drama
+    fa - fantasy
+    ga - gangster
+    po - political
+    ro - romance
+    mu - musical
+    sf - science-fiction -->
+    <string name="genre_an_sf">animation, sci-fi</string>
+    <string name="genre_co_dr_ro">comedy, drama, romance</string>
+    <string name="genre_an_ad_fa">animation, adventure, fantasy</string>
+    <string name="genre_co_ro_mu">romantic comedy, musical</string>
+    <string name="genre_an_ad">animation, adventure</string>
+    <string name="genre_dr_ga">drama, gangster</string>
+    <string name="genre_an_ad_co">animation, comedy, adventure</string>
+    <string name="genre_dr_po">drama, political</string>
+    <string name="genre_co">comedy</string>
+    <string name="genre_ad_fa">adventure, fantasy</string>
+    <string name="genre_an">animation</string>
+    <string name="genre_an_ad_sf">animation, adventure, sci-fi</string>
+    <string name="genre_an_co">animation, comedy</string>
+    <string name="genre_ad_co">adventure, comedy</string>
+
+    <!-- Film year of production -->
+    <string name="year_1972">1972</string>
+    <string name="year_1994">1994</string>
+    <string name="year_1997">1997</string>
+    <string name="year_1998">1998</string>
+    <string name="year_2000">2000</string>
+    <string name="year_2001">2001</string>
+    <string name="year_2002">2002</string>
+    <string name="year_2005">2005</string>
+    <string name="year_2008">2008</string>
+    <string name="year_2009">2009</string>
+    <string name="year_2010">2010</string>
+    <string name="year_2011">2011</string>
+    <string name="year_2012">2012</string>
+    <string name="year_2013">2013</string>
+    <string name="year_2014">2014</string>
+    <string name="year_2015">2015</string>
+    <string name="year_2016">2016</string>
+
+    <!-- Film descriptions -->
+    <string name="general_description">Sample description of the films just to see how it looks like in my new DescriptionActivity. Hope it works good!</string>
+    <string name="des_zootopia">Determined to prove herself, Officer Judy Hopps, the first bunny on Zootopia police force, jumps at the chance to crack her first case - even if it means partnering with scam-artist fox Nick Wilde to solve the mystery.</string>
+    <string name="des_hercules">Bestowed with superhuman strength, a young mortal named Hercules sets out to prove himself a hero in the eyes of his father, the great god Zeus. Along with his friends Pegasus, a flying horse, and Phil, a personal trainer, Hercules is tricked by the hilarious, hotheaded villain Hades, who is plotting to take over Mount Olympus!</string>
+    <string name="des_walle">WALLE is the last robot left on an Earth that has been overrun with garbage and all humans have fled to outer space. For 700 years he has continued to try and clean up the mess, but has developed some rather interesting human-like qualities. When a ship arrives with a sleek new type of robot, WALLE thinks he has finally found a friend and stows away on the ship when it leaves.</string>
+    <string name="des_csl">Cal Weaver is living the American dream. He has a good job, a beautiful house, great children and a beautiful wife, named Emily. Cal is seemingly perfect life unravels, however, when he learns that Emily has been unfaithful and wants a divorce. Over 40 and suddenly single, Cal is adrift in the fickle world of dating. Enter, Jacob Palmer, a self-styled player who takes Cal under his wing and teaches him how to be a hit with the ladies.</string>
+    <string name="des_httyd">The thrilling second chapter of the epic How To Train Your Dragon trilogy brings back the fantastical world of Hiccup and Toothless five years later. While Astrid, Snotlout and the rest of the gang are challenging each other to dragon races (the island new favorite contact sport), the now inseparable pair journey through the skies, charting unmapped territories and exploring new worlds. When one of their adventures leads to the discovery of a secret ice cave that is home to hundreds of new wild dragons and the mysterious Dragon Rider, the two friends find themselves at the center of a battle to protect the peace.</string>
+    <string name="des_pitch_perfect">The Bellas are back, and they are better than ever. After being humiliated in front of none other than the President of the United States of America, the Bellas are taken out of the Aca-Circuit. In order to clear their name, and regain their status, the Bellas take on a seemingly impossible task: winning an international competition no American team has ever won. In order to accomplish this monumental task, they need to strengthen the bonds of friendship and sisterhood and blow away the competition with their amazing aca-magic! With all new friends and old rivals tagging along for the trip, the Bellas can hopefully accomplish their dreams.</string>
+    <string name="des_moana">In Ancient Polynesia, when a terrible curse incurred by Maui reaches an impetuous Chieftain daughter island, she answers the Ocean call to seek out the demigod to set things right.</string>
+    <string name="des_"></string>
+
+
+</resources>
