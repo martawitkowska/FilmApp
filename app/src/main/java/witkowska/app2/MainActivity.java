@@ -1,24 +1,26 @@
 package witkowska.app2;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import layout.DescriptionFragmentOne;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        if (savedInstanceState != null)
-            savedInstanceState(savedInstanceState);
-        else
+//        if (savedInstanceState != null)
+//            savedInstanceState(savedInstanceState);
+//        else
             prepareMovieData();
 
             recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView,
@@ -56,14 +58,21 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View view, int position) {
                         Movie movie = movieList.get(position).getMovie();
                         //Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
-                        Intent descriptionIntent = new Intent(getApplicationContext(), DescriptionActivity.class);
-                        Bundle movie_data = new Bundle();
 
+                        Intent descriptionIntent = new Intent(getApplicationContext(), DescriptionActivity.class);
+
+                        Bundle movie_data = new Bundle();
                         movie_data.putInt("Position", position);
                         movie_data.putSerializable("Movies", (Serializable)movieList);
-                        descriptionIntent.putExtra("Bundle", movie_data);
 
+                        descriptionIntent.putExtra("Bundle", movie_data);
                         startActivityForResult(descriptionIntent, 123);
+
+//                        DescriptionFragmentOne fragment = new DescriptionFragmentOne();
+//                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                        transaction.replace(R.id.fragmentMain, fragment);
+//                        transaction.commit();
+
                     }
                     @Override
                     public void onLongClick(View view, int position) {
@@ -106,122 +115,115 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void savedInstanceState(Bundle savedInstanceState) {
-        moviesToSee = (ArrayList<Boolean>) savedInstanceState.getSerializable("moviesToSee");
-        ArrayList <Model> temp = (ArrayList<Model>) savedInstanceState.getSerializable("movieList");
-        for (int i=0; i<temp.size(); i++) {
-            Movie movie = temp.get(i).getMovie();
-            if (i % 2 == 0)
-                movieList.add(new Model(Model.LEFT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource())));
-            else
-                movieList.add(new Model(Model.RIGHT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource())));
-            mAdapter.notifyItemChanged(i);
-        }
-        //Toast.makeText(getApplicationContext(), "movieList.size() = " + String.valueOf(movieList.size()) + "\nmoviesToSee = " + String.valueOf(moviesToSee.size()), Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("movieList", (Serializable)movieList);
-        outState.putSerializable("moviesToSee", moviesToSee);
-        super.onSaveInstanceState(outState);
-    }
-
-//    @Override
-//    protected void onResume() {
-//        Toast.makeText(getApplicationContext(), "Znów jestem!", Toast.LENGTH_SHORT).show();
+//    public void onResume() {
+//
 //        super.onResume();
+//    }
+
+
+//    public void savedInstanceState(Bundle savedInstanceState) {
+//        moviesToSee = (ArrayList<Boolean>) savedInstanceState.getSerializable("moviesToSee");
+//        ArrayList <Model> temp = (ArrayList<Model>) savedInstanceState.getSerializable("movieList");
+//        for (int i=0; i<temp.size(); i++) {
+//            Movie movie = temp.get(i).getMovie();
+//            if (i % 2 == 0)
+//                movieList.add(new Model(Model.LEFT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource())));
+//            else
+//                movieList.add(new Model(Model.RIGHT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource())));
+//            mAdapter.notifyItemChanged(i);
+//        }
+//        //Toast.makeText(getApplicationContext(), "movieList.size() = " + String.valueOf(movieList.size()) + "\nmoviesToSee = " + String.valueOf(moviesToSee.size()), Toast.LENGTH_LONG).show();
 //    }
 //
 //    @Override
-//    protected void onDestroy() {
-//        Toast.makeText(getApplicationContext(), "Jeszcze tu wrócę!!!", Toast.LENGTH_SHORT).show();
-//        super.onDestroy();
+//    public void onSaveInstanceState(Bundle outState) {
+////        outState.putSerializable("movieList", (Serializable)movieList);
+//        outState.putSerializable("moviesToSee", moviesToSee);
+//        super.onSaveInstanceState(outState);
 //    }
 
     @Override
     protected void onActivityResult (int reqId, int resC, Intent intent) {
         if (resC == Activity.RESULT_OK && reqId == 123) {
-            Bundle movie_data = new Bundle();
-            movie_data = intent.getExtras();
+            Bundle movie_data = intent.getExtras();
             int position = movie_data.getInt("Position");
             Movie movie = movieList.get(position).getMovie();
             //movie.setTitle(movie_data.getString("Title"));
 
-            //doesn't work...
-//            float rating = movie_data.getFloat("Rating");
-//            movie.setRating(rating);
+            //WORKING
+            float rating = movie_data.getFloat("RatingFromFragment");
+            movie.setRating(rating);
 
             for (int i=0; i<moviesToSee.size(); i++)
                 if (moviesToSee.get(i))
                     movieList.get(i).getMovie().setHasBeenSeen(false);
             mAdapter.notifyItemChanged(position);
 
-            //Toast.makeText(getApplicationContext(), "Rating of '" + movie.getTitle() + "' is " + String.valueOf(rating), Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(), "Rating: " + String.valueOf(rating) + "\nPosition: " + String.valueOf(position), Toast.LENGTH_LONG).show();
         }
     }
 
 
+//   public void ChangeFragment(View view) {
+//        Fragment fragment;
+//    }
+
 
     private void prepareMovieData() {
-        Movie movie = new Movie(getString(R.string.title_walle), getString(R.string.genre_an_sf), getString(R.string.year_2008), R.drawable.walle, R.string.des_walle);
+        Movie movie = new Movie(getString(R.string.title_walle), getString(R.string.genre_an_sf), 2008, R.drawable.walle, R.string.des_walle);
+        Integer[] pictures_and_actors = {R.drawable.narnia01, R.drawable.narnia02, R.drawable.narnia03, R.drawable.narnia04, R.drawable.narnia05, R.drawable.narnia06,
+        R.drawable.narnia_1, R.drawable.narnia_2, R.drawable.narnia_3, R.string.narnia_actor1_name, R.string.narnia_actor2_name, R.string.narnia_actor3_name};
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_csl), getString(R.string.genre_co_dr_ro), getString(R.string.year_2011), R.drawable.crazy_stupid_love, R.string.des_csl);
+        movie = new Movie(getString(R.string.title_csl), getString(R.string.genre_co_dr_ro), 2011, R.drawable.crazy_stupid_love, R.string.des_csl);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_httyd), getString(R.string.genre_an_ad_fa), getString(R.string.year_2014), R.drawable.dragon, R.string.des_httyd);
-        movieList.add(new Model(Model.LEFT_SIDE, movie));
-
-        movie = new Movie(getString(R.string.title_moana), getString(R.string.genre_an_ad), getString(R.string.year_2016), R.drawable.moana, R.string.des_moana);
+        movie = new Movie(getString(R.string.title_moana), getString(R.string.genre_an_ad), 2016, R.drawable.moana, R.string.des_moana);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_shrek), getString(R.string.genre_an_co), getString(R.string.year_2001), R.drawable.shrek, R.string.general_description);
+        movie = new Movie(getString(R.string.title_shrek), getString(R.string.genre_an_co), 2001, R.drawable.shrek, R.string.general_description);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_hercules), getString(R.string.genre_an_ad), getString(R.string.year_1997), R.drawable.hercules, R.string.des_hercules);
+        movie = new Movie(getString(R.string.title_hercules), getString(R.string.genre_an_ad), 1997, R.drawable.hercules, R.string.des_hercules);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_pitch_perfect), getString(R.string.genre_co_ro_mu), getString(R.string.year_2012), R.drawable.pitch_perfect, R.string.des_pitch_perfect);
+        movie = new Movie(getString(R.string.title_pitch_perfect), getString(R.string.genre_co_ro_mu), 2012, R.drawable.pitch_perfect, R.string.des_pitch_perfect);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_el_dorado), getString(R.string.genre_an_ad), getString(R.string.year_2000), R.drawable.el_dorado, R.string.general_description);
+        movie = new Movie(getString(R.string.title_el_dorado), getString(R.string.genre_an_ad), 2000, R.drawable.el_dorado, R.string.general_description);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_godfather), getString(R.string.genre_dr_ga), getString(R.string.year_1972), R.drawable.godfather, R.string.general_description);
+        movie = new Movie(getString(R.string.title_godfather), getString(R.string.genre_dr_ga), 1972, R.drawable.godfather, R.string.general_description);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_zoo), getString(R.string.genre_an_ad_co), getString(R.string.year_2016), R.drawable.zootopia, R.string.des_zootopia);
+        movie = new Movie(getString(R.string.title_zoo), getString(R.string.genre_an_ad_co), 2016, R.drawable.zootopia, R.string.des_zootopia);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_hoc), getString(R.string.genre_dr_po), getString(R.string.year_2013), R.drawable.house_of_cards, R.string.general_description);
+        movie = new Movie(getString(R.string.title_hoc), getString(R.string.genre_dr_po), 2013, R.drawable.house_of_cards, R.string.general_description);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_legally_blonde), getString(R.string.genre_co), getString(R.string.year_2001), R.drawable.legally_blond, R.string.general_description);
+        movie = new Movie(getString(R.string.title_legally_blonde), getString(R.string.genre_co), 2001, R.drawable.legally_blond, R.string.general_description);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_mulan), getString(R.string.genre_an_ad), getString(R.string.year_1998), R.drawable.mulan, R.string.general_description);
+        movie = new Movie(getString(R.string.title_mulan), getString(R.string.genre_an_ad), 1998, R.drawable.mulan, R.string.general_description);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_narnia), getString(R.string.genre_ad_fa), getString(R.string.year_2005), R.drawable.narnia, R.string.general_description);
+        movie = new Movie(getString(R.string.title_narnia), getString(R.string.genre_ad_fa), 2005, R.drawable.narnia, R.string.general_description);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_easy_a), getString(R.string.genre_co), getString(R.string.year_2010), R.drawable.easy_a, R.string.general_description);
+        movie = new Movie(getString(R.string.title_easy_a), getString(R.string.genre_co), 2010, R.drawable.easy_a, R.string.general_description);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_lion_king), getString(R.string.genre_an), getString(R.string.year_1994), R.drawable.lion_king, R.string.general_description);
+        movie = new Movie(getString(R.string.title_lion_king), getString(R.string.genre_an), 1994, R.drawable.lion_king, R.string.general_description);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_up), getString(R.string.genre_an_ad_co), getString(R.string.year_2009), R.drawable.up, R.string.general_description);
+        movie = new Movie(getString(R.string.title_up), getString(R.string.genre_an_ad_co), 2009, R.drawable.up, R.string.general_description);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_treasure), getString(R.string.genre_an_ad_sf), getString(R.string.year_2002), R.drawable.treasure_planet, R.string.general_description);
-        movieList.add(new Model(Model.RIGHT_SIDE, movie));
-
-        movie = new Movie(getString(R.string.title_inside_out), getString(R.string.genre_an_co), getString(R.string.year_2015), R.drawable.inside_out, R.string.general_description);
+        movie = new Movie(getString(R.string.title_inside_out), getString(R.string.genre_an_co), 2015, R.drawable.inside_out, R.string.general_description);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_asterix), getString(R.string.genre_ad_co), getString(R.string.year_2002), R.drawable.asterix_obelix, R.string.general_description);
+        movie = new Movie(getString(R.string.title_asterix), getString(R.string.genre_ad_co), 2002, R.drawable.asterix_obelix, R.string.general_description);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
         for (int i=0; i<movieList.size();i++)

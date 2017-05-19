@@ -67,7 +67,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         Movie movie = moviesList.get(position).getMovie();
         holder.title.setText(movie.getTitle());
         holder.genre.setText(movie.getGenre());
-        holder.year.setText(movie.getYear());
+        holder.year.setText(String.valueOf(movie.getYear()));
         holder.picture.setImageResource(movie.getPictureResource());
         //holder.eye.setImageResource(movie.getEyeResource());
         if (!movie.getHasBeenSeen())
