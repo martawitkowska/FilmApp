@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.ActorsFragmentThree">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="81dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_marginRight="0dp">
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineleftleft"
+            app:layout_constraintGuide_percent="0.05"
+            android:orientation="vertical"/>
+
+
+        <ImageView
+            android:id="@+id/picture_1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/narnia_1"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineleftleft"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="10dp" />
+
+        <ImageView
+            android:id="@+id/picture_frame_1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/frame"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineleftleft"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/author_name_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Georgie\nHenley"
+            android:textAllCaps="false"
+            android:textDirection="locale"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/title"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:elegantTextHeight="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintLeft_toRightOf="@+id/picture_1"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toTopOf="@+id/picture_1"
+            android:layout_marginTop="10dp" />
+
+        <ImageView
+            android:id="@+id/picture_2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/narnia_2"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineleftleft"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/picture_1" />
+
+        <ImageView
+            android:id="@+id/picture_frame_2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/frame"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineleftleft"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/picture_1" />
+
+        <TextView
+            android:id="@+id/author_name_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="William Peter \nMoseley"
+            android:textAllCaps="false"
+            android:textDirection="locale"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/title"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:elegantTextHeight="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintLeft_toRightOf="@+id/picture_2"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toTopOf="@+id/picture_2"
+            android:layout_marginTop="10dp" />
+
+
+        <ImageView
+            android:id="@+id/picture_3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/narnia_3"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineleftleft"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/picture_2" />
+
+        <ImageView
+            android:id="@+id/picture_frame_3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/frame"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineleftleft"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/picture_2" />
+
+        <TextView
+            android:id="@+id/author_name_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Anna \nPopplewell"
+            android:textAllCaps="false"
+            android:textDirection="locale"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/title"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:elegantTextHeight="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintLeft_toRightOf="@+id/picture_3"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toTopOf="@+id/picture_3"
+            android:layout_marginTop="10dp" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

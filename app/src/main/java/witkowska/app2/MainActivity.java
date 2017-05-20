@@ -171,23 +171,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void prepareMovieData() {
         Movie movie = new Movie(getString(R.string.title_walle), getString(R.string.genre_an_sf), 2008, R.drawable.walle, R.string.des_walle);
-        Integer[] pictures_and_actors = {R.drawable.narnia01, R.drawable.narnia02, R.drawable.narnia03, R.drawable.narnia04, R.drawable.narnia05, R.drawable.narnia06,
-        R.drawable.narnia_1, R.drawable.narnia_2, R.drawable.narnia_3, R.string.narnia_actor1_name, R.string.narnia_actor2_name, R.string.narnia_actor3_name};
+//        Integer[] pictures_and_actors_walle = {R.drawable.narnia01, R.drawable.narnia02, R.drawable.narnia03, R.drawable.narnia04, R.drawable.narnia05, R.drawable.narnia06,
+//                R.drawable.narnia_1, R.drawable.narnia_2, R.drawable.narnia_3, R.string.narnia_actor1_name, R.string.narnia_actor2_name, R.string.narnia_actor3_name};
+//        movie.setPicturesActors(pictures_and_actors_walle);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
         movie = new Movie(getString(R.string.title_csl), getString(R.string.genre_co_dr_ro), 2011, R.drawable.crazy_stupid_love, R.string.des_csl);
+        Integer[] pictures_and_actors_csl = {R.drawable.csl_01, R.drawable.csl_02,R.drawable.csl_03,R.drawable.csl_04,R.drawable.csl_05,R.drawable.csl_06,
+                R.drawable.csl_1,R.drawable.csl_2,R.drawable.csl_3, R.string.csl_1, R.string.csl_2, R.string.csl_3};
+        movie.setPicturesActors(pictures_and_actors_csl);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
+
+        movie = new Movie(getString(R.string.title_big_hero_6), getString(R.string.genre_an_ad_co), 2014, R.drawable.big_hero_6, R.string.des_big_hero_6);
+        Integer[] pictures_and_actors_baymax = {R.drawable.big_hero_01, R.drawable.big_hero_02, R.drawable.big_hero_03, R.drawable.big_hero_04, R.drawable.big_hero_05, R.drawable.big_hero_06,
+                R.drawable.big_hero_1, R.drawable.big_hero_2, R.drawable.big_hero_3, R.string.big_hero_1, R.string.big_hero_2, R.string.big_hero_3};
+        movie.setPicturesActors(pictures_and_actors_baymax);
+        movieList.add(new Model(Model.LEFT_SIDE, movie));
 
         movie = new Movie(getString(R.string.title_moana), getString(R.string.genre_an_ad), 2016, R.drawable.moana, R.string.des_moana);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_shrek), getString(R.string.genre_an_co), 2001, R.drawable.shrek, R.string.general_description);
-        movieList.add(new Model(Model.LEFT_SIDE, movie));
-
         movie = new Movie(getString(R.string.title_hercules), getString(R.string.genre_an_ad), 1997, R.drawable.hercules, R.string.des_hercules);
-        movieList.add(new Model(Model.RIGHT_SIDE, movie));
-
-        movie = new Movie(getString(R.string.title_pitch_perfect), getString(R.string.genre_co_ro_mu), 2012, R.drawable.pitch_perfect, R.string.des_pitch_perfect);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
         movie = new Movie(getString(R.string.title_el_dorado), getString(R.string.genre_an_ad), 2000, R.drawable.el_dorado, R.string.general_description);
@@ -202,13 +206,10 @@ public class MainActivity extends AppCompatActivity {
         movie = new Movie(getString(R.string.title_hoc), getString(R.string.genre_dr_po), 2013, R.drawable.house_of_cards, R.string.general_description);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_legally_blonde), getString(R.string.genre_co), 2001, R.drawable.legally_blond, R.string.general_description);
-        movieList.add(new Model(Model.RIGHT_SIDE, movie));
-
-        movie = new Movie(getString(R.string.title_mulan), getString(R.string.genre_an_ad), 1998, R.drawable.mulan, R.string.general_description);
-        movieList.add(new Model(Model.LEFT_SIDE, movie));
-
         movie = new Movie(getString(R.string.title_narnia), getString(R.string.genre_ad_fa), 2005, R.drawable.narnia, R.string.general_description);
+        Integer[] pictures_and_actors_narnia = {R.drawable.narnia01, R.drawable.narnia02, R.drawable.narnia03, R.drawable.narnia04, R.drawable.narnia05, R.drawable.narnia06,
+                R.drawable.narnia_1, R.drawable.narnia_2, R.drawable.narnia_3, R.string.narnia_1, R.string.narnia_2, R.string.narnia_3};
+        movie.setPicturesActors(pictures_and_actors_narnia);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
         movie = new Movie(getString(R.string.title_easy_a), getString(R.string.genre_co), 2010, R.drawable.easy_a, R.string.general_description);
@@ -221,10 +222,16 @@ public class MainActivity extends AppCompatActivity {
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
         movie = new Movie(getString(R.string.title_inside_out), getString(R.string.genre_an_co), 2015, R.drawable.inside_out, R.string.general_description);
-        movieList.add(new Model(Model.LEFT_SIDE, movie));
+        movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
         movie = new Movie(getString(R.string.title_asterix), getString(R.string.genre_ad_co), 2002, R.drawable.asterix_obelix, R.string.general_description);
+        movieList.add(new Model(Model.LEFT_SIDE, movie));
+
+        movie = new Movie(getString(R.string.title_httyd), getString(R.string.genre_ad_co), 2002, R.drawable.dragon, R.string.general_description);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
+
+        movie = new Movie(getString(R.string.title_legally_blonde), getString(R.string.genre_ad_co), 2002, R.drawable.legally_blond, R.string.general_description);
+        movieList.add(new Model(Model.LEFT_SIDE, movie));
 
         for (int i=0; i<movieList.size();i++)
             moviesToSee.add(false);

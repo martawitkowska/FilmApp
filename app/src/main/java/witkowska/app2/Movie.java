@@ -63,10 +63,11 @@ public class Movie implements Serializable {
             pictures[i] = pictures_actors[i];
         return pictures;
     }
+
     public Integer[] getActors() {
         Integer[] actors = new Integer[6];
-        for (int i=6; i<12; i++)
-            actors[i] = pictures_actors[i];
+        for (int i=0; i<6; i++)
+            actors[i] = pictures_actors[i+6];
         return actors;
     }
 

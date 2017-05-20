@@ -119,6 +119,11 @@ public class DescriptionActivity extends AppCompatActivity {
 
     }
 
+//    public void pictureClick(View view) {
+//        Toast.makeText(getApplicationContext(), "It works from parent... -.-", Toast.LENGTH_SHORT).show();
+//
+//    }
+
 //    public void onPause() {
 //        //Toast.makeText(getApplicationContext(), "Visiting DescriptionActivity()", Toast.LENGTH_SHORT).show();
 //        super.onPause();

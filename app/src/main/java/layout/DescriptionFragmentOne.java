@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,7 @@ public class DescriptionFragmentOne extends Fragment {
 
     private List<Model> movieList = new ArrayList<>();
     float saved_rating = 0;
+    Bundle movie_data;
     Movie movie;
     RatingBar rating_bar;
 
@@ -87,8 +90,9 @@ public class DescriptionFragmentOne extends Fragment {
     // onViewCreated() is only called if the view returned from onCreateView() is non-null.
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(View view, final Bundle savedInstanceState) {
 
+        ImageView image = (ImageView) view.findViewById(R.id.picture);
         TextView title_tv = (TextView) view.findViewById(R.id.title);
         TextView genre_tv = (TextView) view.findViewById(R.id.genre);
         TextView year_tv = (TextView) view.findViewById(R.id.year);
@@ -96,8 +100,7 @@ public class DescriptionFragmentOne extends Fragment {
         rating_bar = (RatingBar) view.findViewById(R.id.rating_bar);
         ImageView picture = (ImageView) view.findViewById(R.id.picture);
 
-
-        Bundle movie_data = getArguments();
+        movie_data = getArguments();
         movieList = (ArrayList<Model>) movie_data.getSerializable("Movies");
         final int position = movie_data.getInt("Position");
 
@@ -110,7 +113,6 @@ public class DescriptionFragmentOne extends Fragment {
         picture.setImageResource(movie.getPictureResource());
         rating_bar.setRating(movie.getRating());
 
-
 //        loadDatafromBundle();
 
         rating_bar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -120,6 +122,29 @@ public class DescriptionFragmentOne extends Fragment {
             }
         });
 
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)  {
+
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+
+                if (savedInstanceState == null) {
+                    PhotosFragmentTwo fragment_two = new PhotosFragmentTwo();
+                    fragment_two.setArguments(movie_data);
+                    ActorsFragmentThree fragment_three = new ActorsFragmentThree();
+                    fragment_three.setArguments(movie_data);
+
+                    ft.replace(R.id.fragment_container, fragment_two);
+                    ft.add(R.id.fragment_container2, fragment_three);
+                    ft.commit();
+                }
+
+//                Toast.makeText(getActivity(), "It works from onClickListener", Toast.LENGTH_SHORT).show();
+            }
+
+        });
 
 
     }
@@ -140,10 +165,20 @@ public class DescriptionFragmentOne extends Fragment {
 //        //Save the fragment's state here
 //    }
 
+//    public void pictureClick(View view) {
+//        Toast.makeText(getActivity(), "It works!", Toast.LENGTH_SHORT).show();
+//
+//    }
 
     public float getRating(){
         return saved_rating;
     }
+
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        outState.putSerializable("Rating", saved_rating);
+//    }
 
 
 
