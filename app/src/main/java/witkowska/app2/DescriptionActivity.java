@@ -58,7 +58,23 @@ public class DescriptionActivity extends AppCompatActivity {
         Movie movie = movieList.get(position).getMovie();
         saved_rating = movie.getRating();
 
-        startFragmentOne();
+
+
+        if (savedInstanceState != null) {
+            fragment_two = savedInstanceState.getBoolean("Fragment");
+            saved_rating = savedInstanceState.getFloat("SavedRating");
+            Toast.makeText(getApplicationContext(), "onCreate() in DesActivity\nFragment = " + String.valueOf(fragment_two), Toast.LENGTH_SHORT).show();
+
+            if (fragment_two)
+                startFragmentTwoAndThree();
+            else
+                startFragmentOne();
+        } else
+//            fragment_two = savedInstanceState.getBoolean("Fragment");
+//            if (fragment_two)
+//                startFragmentTwoAndThree();;
+//        } else
+            startFragmentOne();
 
 
 
@@ -85,7 +101,7 @@ public class DescriptionActivity extends AppCompatActivity {
 //            }
 //        });
 //
-//        Toast.makeText(getApplicationContext(), "onCreate() in DesActivity", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "onCreate() in DesActivity\nFragment = " + String.valueOf(fragment_two), Toast.LENGTH_SHORT).show();
 
 
 //        Button button = (Button)findViewById(R.id.button);
@@ -124,23 +140,23 @@ public class DescriptionActivity extends AppCompatActivity {
 //        movieList.get(position).getMovie().setRating(fragment_one.getRating());
 //        movie_data.putSerializable("Movies", (Serializable)movieList);
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-
         fragment_two = false;
         movie_data.putFloat("SavedRating", saved_rating);
 
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
         fragment_one = new DescriptionFragmentOne();
         fragment_one.setArguments(movie_data);
-
         ft.replace(R.id.fragment_container, fragment_one);
         ft.commit();
     }
 
-    public void pictureClick(View view) {
-//        Toast.makeText(getApplicationContext(), "Rating = " + String.valueOf(fragment_one.getRating()), Toast.LENGTH_SHORT).show();
+
+    public void startFragmentTwoAndThree() {
         fragment_two = true;
-        saved_rating = fragment_one.getRating();
+        if (fragment_one != null)
+            saved_rating = fragment_one.getRating();
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -155,22 +171,33 @@ public class DescriptionActivity extends AppCompatActivity {
         ft.commit();
     }
 
+    public void pictureClick(View view) {
+//        Toast.makeText(getApplicationContext(), "Rating = " + String.valueOf(fragment_one.getRating()), Toast.LENGTH_SHORT).show();
+        startFragmentTwoAndThree();
+    }
+
 //    public void onPause() {
 //        //Toast.makeText(getApplicationContext(), "Visiting DescriptionActivity()", Toast.LENGTH_SHORT).show();
 //        super.onPause();
 //    }
 
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        outState.putBoolean("Fragment", fragment_two);
-//    }
-//
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("Fragment", fragment_two);
+        if (fragment_one != null)
+            outState.putFloat("SavedRating", fragment_one.getRating());
+        else
+            outState.putFloat("SavedRating", saved_rating);
+//        outState.putInt("Position", position);
+//        movie_data.putSerializable("Movies", (Serializable)movieList);
+        Toast.makeText(getApplicationContext(), "onSaveInstant() in DesActivity", Toast.LENGTH_SHORT).show();
+    }
+
 //    @Override
 //    public void onRestoreInstanceState(Bundle savedInstanceState) {
 //        super.onRestoreInstanceState(savedInstanceState);
-//        fragment_two = savedInstanceState.getBoolean("Fragment");
-////        Toast.makeText(getApplicationContext(), "Fragment = " + String.valueOf(fragment_two) + "\nfrom onRestore() in DesActivity", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "onRestore() in DesActivity", Toast.LENGTH_SHORT).show();
 //    }
 
 
