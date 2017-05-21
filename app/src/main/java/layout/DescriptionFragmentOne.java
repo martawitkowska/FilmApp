@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import witkowska.app2.DescriptionActivity;
 import witkowska.app2.MainActivity;
 import witkowska.app2.Model;
 import witkowska.app2.Movie;
@@ -103,6 +104,7 @@ public class DescriptionFragmentOne extends Fragment {
         movie_data = getArguments();
         movieList = (ArrayList<Model>) movie_data.getSerializable("Movies");
         final int position = movie_data.getInt("Position");
+//        float saved_rating = movie_data.getFloat("SavedRating");
 
         movie = movieList.get(position).getMovie();
 
@@ -111,50 +113,55 @@ public class DescriptionFragmentOne extends Fragment {
         year_tv.setText(String.valueOf(movie.getYear()));
         description_tv.setText(getString(movie.getDescriptionResource()));
         picture.setImageResource(movie.getPictureResource());
-        rating_bar.setRating(movie.getRating());
+        rating_bar.setRating(movie_data.getFloat("SavedRating"));
+
 
 //        loadDatafromBundle();
+//
+//        rating_bar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+//            @Override
+//            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+//                saved_rating = rating;
+//            }
+//        });
 
-        rating_bar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                saved_rating = rating;
-            }
-        });
-
-
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)  {
-
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-
-                if (savedInstanceState == null) {
-                    PhotosFragmentTwo fragment_two = new PhotosFragmentTwo();
-                    fragment_two.setArguments(movie_data);
-                    ActorsFragmentThree fragment_three = new ActorsFragmentThree();
-                    fragment_three.setArguments(movie_data);
-
-                    ft.replace(R.id.fragment_container, fragment_two);
-                    ft.add(R.id.fragment_container2, fragment_three);
-                    ft.commit();
-                }
-
-//                Toast.makeText(getActivity(), "It works from onClickListener", Toast.LENGTH_SHORT).show();
-            }
-
-        });
+//
+//        image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v)  {
+//
+//                FragmentManager fm = getActivity().getSupportFragmentManager();
+//                FragmentTransaction ft = fm.beginTransaction();
+//
+//                if (savedInstanceState == null) {
+//                    PhotosFragmentTwo fragment_two = new PhotosFragmentTwo();
+//                    fragment_two.setArguments(movie_data);
+//                    ActorsFragmentThree fragment_three = new ActorsFragmentThree();
+//                    fragment_three.setArguments(movie_data);
+//
+//                    ft.replace(R.id.fragment_container, fragment_two);
+//                    ft.add(R.id.fragment_container2, fragment_three);
+//                    ft.commit();
+//                }
+//
+////                Toast.makeText(getActivity(), "It works from onClickListener", Toast.LENGTH_SHORT).show();
+//            }
+//
+//        });
 
 
     }
 
+    public void pictureClick (View view) {
+        //needs to be implemented
+    }
+
 //    public void onPause() {
-////        Intent intent = new Intent(getActivity(), MainActivity.class);
-////        intent.putExtra("FragmentRating", saved_rating);
-////        startActivity(intent);
+//        Intent intent = new Intent(getActivity(), DescriptionActivity.class);
+//        intent.putExtra("FragmentRating", saved_rating);
+//        startActivity(intent);
 //
-//        Toast.makeText(getActivity(), "Rating = " + String.valueOf(saved_rating), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "Fragment one - onPause()", Toast.LENGTH_SHORT).show();
 //        super.onPause();
 //    }
 
@@ -171,8 +178,11 @@ public class DescriptionFragmentOne extends Fragment {
 //    }
 
     public float getRating(){
-        return saved_rating;
+        return rating_bar.getRating();
     }
+
+
+
 
 //    @Override
 //    public void onSaveInstanceState(Bundle outState) {

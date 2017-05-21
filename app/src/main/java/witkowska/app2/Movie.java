@@ -15,7 +15,7 @@ public class Movie implements Serializable {
 
     private String title, genre;
     int pic_resource, desc_resource, eye_resource, year;
-    float rating;
+    private float rating;
     boolean has_been_seen;
     Integer[] pictures_actors; //6 pictures, 3 photos of actors and 3 names
 
@@ -28,6 +28,18 @@ public class Movie implements Serializable {
         this.pic_resource = pic_resource;
         this.desc_resource = desc_resource;
         rating = 0;
+        //eye_resource = R.drawable.empty;
+        has_been_seen = true;
+        pictures_actors = new Integer[12];
+    }
+
+    public Movie (String title, String genre, int year, int pic_resource, int desc_resource, float rating) {
+        this.title = title;
+        this.genre = genre;
+        this.year = year;
+        this.pic_resource = pic_resource;
+        this.desc_resource = desc_resource;
+        this.rating = rating;
         //eye_resource = R.drawable.empty;
         has_been_seen = true;
         pictures_actors = new Integer[12];

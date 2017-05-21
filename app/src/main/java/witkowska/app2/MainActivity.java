@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-//        if (savedInstanceState != null)
-//            savedInstanceState(savedInstanceState);
-//        else
+        if (savedInstanceState != null)
+            savedInstanceState (savedInstanceState);
+        else
             prepareMovieData();
 
             recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView,
@@ -121,26 +121,32 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
-//    public void savedInstanceState(Bundle savedInstanceState) {
-//        moviesToSee = (ArrayList<Boolean>) savedInstanceState.getSerializable("moviesToSee");
-//        ArrayList <Model> temp = (ArrayList<Model>) savedInstanceState.getSerializable("movieList");
-//        for (int i=0; i<temp.size(); i++) {
-//            Movie movie = temp.get(i).getMovie();
-//            if (i % 2 == 0)
-//                movieList.add(new Model(Model.LEFT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource())));
-//            else
-//                movieList.add(new Model(Model.RIGHT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource())));
-//            mAdapter.notifyItemChanged(i);
-//        }
-//        //Toast.makeText(getApplicationContext(), "movieList.size() = " + String.valueOf(movieList.size()) + "\nmoviesToSee = " + String.valueOf(moviesToSee.size()), Toast.LENGTH_LONG).show();
-//    }
-//
-//    @Override
-//    public void onSaveInstanceState(Bundle outState) {
-////        outState.putSerializable("movieList", (Serializable)movieList);
-//        outState.putSerializable("moviesToSee", moviesToSee);
-//        super.onSaveInstanceState(outState);
-//    }
+    public void savedInstanceState(Bundle savedInstanceState) {
+        moviesToSee = (ArrayList<Boolean>) savedInstanceState.getSerializable("moviesToSee");
+//        movieList = (ArrayList<Model>) savedInstanceState.getSerializable("movieList");
+        ArrayList <Model> temp = (ArrayList<Model>) savedInstanceState.getSerializable("movieList");
+        for (int i=0; i<temp.size(); i++) {
+            Movie movie = temp.get(i).getMovie();
+            if (i % 2 == 0) {
+                movieList.add(new Model(Model.LEFT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource(), movie.getRating())));
+//                movieList.get(i).getMovie().setRating(movie.getRating());
+            }
+            else {
+                movieList.add(new Model(Model.RIGHT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource(), movie.getRating())));
+//                movieList.get(i).getMovie().setRating(movie.getRating());
+            }
+            mAdapter.notifyItemChanged(i);
+        }
+        //Toast.makeText(getApplicationContext(), "movieList.size() = " + String.valueOf(movieList.size()) + "\nmoviesToSee = " + String.valueOf(moviesToSee.size()), Toast.LENGTH_LONG).show();
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable("movieList", (Serializable)movieList);
+        outState.putSerializable("moviesToSee", moviesToSee);
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     protected void onActivityResult (int reqId, int resC, Intent intent) {
@@ -153,11 +159,14 @@ public class MainActivity extends AppCompatActivity {
             //WORKING
             float rating = movie_data.getFloat("RatingFromFragment");
             movie.setRating(rating);
+//            Toast.makeText(getApplicationContext(), "Rating = " + String.valueOf(rating), Toast.LENGTH_SHORT).show();
 
             for (int i=0; i<moviesToSee.size(); i++)
                 if (moviesToSee.get(i))
                     movieList.get(i).getMovie().setHasBeenSeen(false);
             mAdapter.notifyItemChanged(position);
+
+//            movieList.get(position).setMovie(movie);
 
 //            Toast.makeText(getApplicationContext(), "Rating: " + String.valueOf(rating) + "\nPosition: " + String.valueOf(position), Toast.LENGTH_LONG).show();
         }

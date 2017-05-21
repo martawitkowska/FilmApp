@@ -24,7 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import layout.ActorsFragmentThree;
 import layout.DescriptionFragmentOne;
+import layout.PhotosFragmentTwo;
 
 /**
  * Created by Administrator on 2017-04-13.
@@ -34,9 +36,11 @@ import layout.DescriptionFragmentOne;
 public class DescriptionActivity extends AppCompatActivity {
 
     private List<Model> movieList = new ArrayList<>();
-    private MoviesAdapter mAdapter;
+    Bundle movie_data;
     DescriptionFragmentOne fragment_one;
     int position;
+    boolean fragment_two;
+    float saved_rating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +51,16 @@ public class DescriptionActivity extends AppCompatActivity {
 
         //mAdapter = new MoviesAdapter(movieList);
         Intent intent = getIntent();
-        Bundle movie_data = intent.getBundleExtra("Bundle");
+        movie_data = intent.getBundleExtra("Bundle");
         movieList = (ArrayList<Model>) movie_data.getSerializable("Movies");
         position = movie_data.getInt("Position");
 
         Movie movie = movieList.get(position).getMovie();
+        saved_rating = movie.getRating();
+
+        startFragmentOne();
+
+
 
 //        TextView title_tv = (TextView) findViewById(R.id.title);
 //        TextView genre_tv = (TextView) findViewById(R.id.genre);
@@ -76,7 +85,7 @@ public class DescriptionActivity extends AppCompatActivity {
 //            }
 //        });
 //
-//        //Toast.makeText(getApplicationContext(), "Counter = " + counter, Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(), "onCreate() in DesActivity", Toast.LENGTH_SHORT).show();
 
 
 //        Button button = (Button)findViewById(R.id.button);
@@ -90,15 +99,6 @@ public class DescriptionActivity extends AppCompatActivity {
 //            }
 //        });
 
-
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-
-        fragment_one = new DescriptionFragmentOne();
-        fragment_one.setArguments(movie_data);
-
-        ft.replace(R.id.fragment_container, fragment_one);
-        ft.commit();
 
 //        if (fragment_one != null) {
 //            intent.putExtra("Rating", fragment_one.getRating());
@@ -119,10 +119,41 @@ public class DescriptionActivity extends AppCompatActivity {
 
     }
 
-//    public void pictureClick(View view) {
-//        Toast.makeText(getApplicationContext(), "It works from parent... -.-", Toast.LENGTH_SHORT).show();
-//
-//    }
+
+    public void startFragmentOne() {
+//        movieList.get(position).getMovie().setRating(fragment_one.getRating());
+//        movie_data.putSerializable("Movies", (Serializable)movieList);
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        fragment_two = false;
+        movie_data.putFloat("SavedRating", saved_rating);
+
+        fragment_one = new DescriptionFragmentOne();
+        fragment_one.setArguments(movie_data);
+
+        ft.replace(R.id.fragment_container, fragment_one);
+        ft.commit();
+    }
+
+    public void pictureClick(View view) {
+//        Toast.makeText(getApplicationContext(), "Rating = " + String.valueOf(fragment_one.getRating()), Toast.LENGTH_SHORT).show();
+        fragment_two = true;
+        saved_rating = fragment_one.getRating();
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        PhotosFragmentTwo fragment_two = new PhotosFragmentTwo();
+        fragment_two.setArguments(movie_data);
+        ActorsFragmentThree fragment_three = new ActorsFragmentThree();
+        fragment_three.setArguments(movie_data);
+
+        ft.replace(R.id.fragment_container, fragment_two);
+        ft.add(R.id.fragment_container2, fragment_three);
+        ft.commit();
+    }
 
 //    public void onPause() {
 //        //Toast.makeText(getApplicationContext(), "Visiting DescriptionActivity()", Toast.LENGTH_SHORT).show();
@@ -132,21 +163,37 @@ public class DescriptionActivity extends AppCompatActivity {
 //    @Override
 //    protected void onSaveInstanceState(Bundle outState) {
 //        super.onSaveInstanceState(outState);
-//        if (fragment_one != null)
-//            outState.putFloat("FragmentRating", fragment_one.getRating());
+//        outState.putBoolean("Fragment", fragment_two);
+//    }
+//
+//    @Override
+//    public void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        fragment_two = savedInstanceState.getBoolean("Fragment");
+////        Toast.makeText(getApplicationContext(), "Fragment = " + String.valueOf(fragment_two) + "\nfrom onRestore() in DesActivity", Toast.LENGTH_SHORT).show();
 //    }
 
 
     @Override
     public void onBackPressed() {
         Intent intent_out = new Intent();
-        if (fragment_one != null)
-            intent_out.putExtra("RatingFromFragment", fragment_one.getRating());
-        intent_out.putExtra("Position", position);
+
+//        Toast.makeText(getApplicationContext(), "DesActivity - onBackPressed()\nFragment = " + String.valueOf(fragment_two), Toast.LENGTH_SHORT).show();
+
+        if (fragment_two) {
+            startFragmentOne();
+        }
+        else {
+            if (fragment_one != null)
+                intent_out.putExtra("RatingFromFragment", fragment_one.getRating());
+            intent_out.putExtra("Position", position);
+            setResult(RESULT_OK, intent_out);
+            finish();
+        }
+
 //        intent_out.putExtra("MovieList", (Serializable)movieList);
 //        Toast.makeText(getApplicationContext(), "onBackPressed()", Toast.LENGTH_SHORT).show();
-        setResult(RESULT_OK, intent_out);
-        finish();
+
     }
 
 

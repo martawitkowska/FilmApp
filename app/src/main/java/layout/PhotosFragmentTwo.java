@@ -49,11 +49,8 @@ public class PhotosFragmentTwo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.photos_fragment_two, container, false);
-    }
+        View view = inflater.inflate(R.layout.photos_fragment_two, container, false);
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
         Integer[] photos = movie.getPictures();
 
         ImageView picture1 = (ImageView) view.findViewById(R.id.picture1);
@@ -70,7 +67,13 @@ public class PhotosFragmentTwo extends Fragment {
         picture5.setImageResource(photos[4]);
         picture6.setImageResource(photos[5]);
 
+        return view;
     }
+
+//    @Override
+//    public void onViewCreated(View view, Bundle savedInstanceState) {
+//
+//    }
 
 //    @Override
 //    public void onSaveInstanceState(Bundle outState) {

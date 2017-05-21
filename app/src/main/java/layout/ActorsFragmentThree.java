@@ -44,11 +44,8 @@ public class ActorsFragmentThree extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.actors_fragment_three, container, false);
-    }
+        View view =  inflater.inflate(R.layout.actors_fragment_three, container, false);
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
         Integer[] actors = movie.getActors();
 
         ImageView picture1 = (ImageView) view.findViewById(R.id.picture_1);
@@ -64,6 +61,13 @@ public class ActorsFragmentThree extends Fragment {
         actor1.setText(getString(actors[3]));
         actor2.setText(getString(actors[4]));
         actor3.setText(getString(actors[5]));
+
+        return view;
     }
+
+//    @Override
+//    public void onViewCreated(View view, Bundle savedInstanceState) {
+//
+//    }
 
 }
