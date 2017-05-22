@@ -128,11 +128,14 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0; i<temp.size(); i++) {
             Movie movie = temp.get(i).getMovie();
             if (i % 2 == 0) {
-                movieList.add(new Model(Model.LEFT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource(), movie.getRating())));
+                movieList.add(new Model(Model.LEFT_SIDE, movie.clone()));
+
+//                movieList.add(new Model(Model.LEFT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource(), movie.getRating())));
 //                movieList.get(i).getMovie().setRating(movie.getRating());
             }
             else {
-                movieList.add(new Model(Model.RIGHT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource(), movie.getRating())));
+                movieList.add(new Model(Model.RIGHT_SIDE, movie.clone()));
+//                movieList.add(new Model(Model.RIGHT_SIDE, new Movie(movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getPictureResource(), movie.getDescriptionResource(), movie.getRating())));
 //                movieList.get(i).getMovie().setRating(movie.getRating());
             }
             mAdapter.notifyItemChanged(i);
@@ -180,9 +183,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void prepareMovieData() {
         Movie movie = new Movie(getString(R.string.title_walle), getString(R.string.genre_an_sf), 2008, R.drawable.walle, R.string.des_walle);
-//        Integer[] pictures_and_actors_walle = {R.drawable.narnia01, R.drawable.narnia02, R.drawable.narnia03, R.drawable.narnia04, R.drawable.narnia05, R.drawable.narnia06,
-//                R.drawable.narnia_1, R.drawable.narnia_2, R.drawable.narnia_3, R.string.narnia_actor1_name, R.string.narnia_actor2_name, R.string.narnia_actor3_name};
-//        movie.setPicturesActors(pictures_and_actors_walle);
+        Integer[] pictures_and_actors_walle = {R.drawable.walle_01, R.drawable.walle_02, R.drawable.walle_03, R.drawable.walle_04, R.drawable.walle_05, R.drawable.walle_06,
+                R.drawable.walle_1, R.drawable.walle_2, R.drawable.walle_3, R.string.walle_1, R.string.walle_2, R.string.walle_3};
+        movie.setPicturesActors(pictures_and_actors_walle);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
         movie = new Movie(getString(R.string.title_csl), getString(R.string.genre_co_dr_ro), 2011, R.drawable.crazy_stupid_love, R.string.des_csl);
@@ -198,48 +201,87 @@ public class MainActivity extends AppCompatActivity {
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
         movie = new Movie(getString(R.string.title_moana), getString(R.string.genre_an_ad), 2016, R.drawable.moana, R.string.des_moana);
+        Integer[] pictures_and_actors_moana = {R.drawable.moana_01, R.drawable.moana_02, R.drawable.moana_03, R.drawable.moana_04, R.drawable.moana_05, R.drawable.moana_06,
+                R.drawable.moana_1, R.drawable.moana_2, R.drawable.moana_3, R.string.moana_1, R.string.moana_2, R.string.moana_3};
+        movie.setPicturesActors(pictures_and_actors_moana);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
         movie = new Movie(getString(R.string.title_hercules), getString(R.string.genre_an_ad), 1997, R.drawable.hercules, R.string.des_hercules);
+        Integer[] pictures_and_actors_hercules = {R.drawable.hercules_01, R.drawable.hercules_02, R.drawable.hercules_03, R.drawable.hercules_04, R.drawable.hercules_05, R.drawable.hercules_06,
+                R.drawable.hercules_1, R.drawable.hercules_2, R.drawable.hercules_3, R.string.hercules_1, R.string.hercules_2, R.string.hercules_3};
+        movie.setPicturesActors(pictures_and_actors_hercules);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_el_dorado), getString(R.string.genre_an_ad), 2000, R.drawable.el_dorado, R.string.general_description);
+        movie = new Movie(getString(R.string.title_el_dorado), getString(R.string.genre_an_ad), 2000, R.drawable.el_dorado, R.string.des_el_dorado);
+        Integer[] pictures_and_actors_el_dorado = {R.drawable.el_dorado_01, R.drawable.el_dorado_02, R.drawable.el_dorado_03, R.drawable.el_dorado_04, R.drawable.el_dorado_05, R.drawable.el_dorado_06,
+                R.drawable.el_dorado_1, R.drawable.el_dorado_2, R.drawable.el_dorado_3, R.string.el_dorado_1, R.string.el_dorado_2, R.string.el_dorado_3};
+        movie.setPicturesActors(pictures_and_actors_el_dorado);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_godfather), getString(R.string.genre_dr_ga), 1972, R.drawable.godfather, R.string.general_description);
+        movie = new Movie(getString(R.string.title_godfather), getString(R.string.genre_dr_ga), 1972, R.drawable.godfather, R.string.des_godfather);
+        Integer[] pictures_and_actors_gf = {R.drawable.gf_01, R.drawable.gf_02, R.drawable.gf_03, R.drawable.gf_04, R.drawable.gf_05, R.drawable.gf_06,
+                R.drawable.gf_1, R.drawable.gf_2, R.drawable.gf_3, R.string.gf_1, R.string.gf_2, R.string.gf_3};
+        movie.setPicturesActors(pictures_and_actors_gf);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
         movie = new Movie(getString(R.string.title_zoo), getString(R.string.genre_an_ad_co), 2016, R.drawable.zootopia, R.string.des_zootopia);
+        Integer[] pictures_and_actors_zoo = {R.drawable.zoo_01, R.drawable.zoo_02, R.drawable.zoo_03, R.drawable.zoo_04, R.drawable.zoo_05, R.drawable.zoo_06,
+                R.drawable.zoo_1, R.drawable.zoo_2, R.drawable.zoo_3, R.string.zoo_1, R.string.zoo_2, R.string.zoo_3};
+        movie.setPicturesActors(pictures_and_actors_zoo);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_hoc), getString(R.string.genre_dr_po), 2013, R.drawable.house_of_cards, R.string.general_description);
+        movie = new Movie(getString(R.string.title_hoc), getString(R.string.genre_dr_po), 2013, R.drawable.house_of_cards, R.string.des_hoc);
+        Integer[] pictures_and_actors_hoc = {R.drawable.hoc_01, R.drawable.hoc_02, R.drawable.hoc_03, R.drawable.hoc_04, R.drawable.hoc_05, R.drawable.hoc_06,
+                R.drawable.hoc_1, R.drawable.hoc_2, R.drawable.hoc_3, R.string.hoc_1, R.string.hoc_2, R.string.hoc_3};
+        movie.setPicturesActors(pictures_and_actors_hoc);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_narnia), getString(R.string.genre_ad_fa), 2005, R.drawable.narnia, R.string.general_description);
+        movie = new Movie(getString(R.string.title_narnia), getString(R.string.genre_ad_fa), 2005, R.drawable.narnia, R.string.des_narnia);
         Integer[] pictures_and_actors_narnia = {R.drawable.narnia01, R.drawable.narnia02, R.drawable.narnia03, R.drawable.narnia04, R.drawable.narnia05, R.drawable.narnia06,
                 R.drawable.narnia_1, R.drawable.narnia_2, R.drawable.narnia_3, R.string.narnia_1, R.string.narnia_2, R.string.narnia_3};
         movie.setPicturesActors(pictures_and_actors_narnia);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_easy_a), getString(R.string.genre_co), 2010, R.drawable.easy_a, R.string.general_description);
+        movie = new Movie(getString(R.string.title_easy_a), getString(R.string.genre_co), 2010, R.drawable.easy_a, R.string.des_easy);
+        Integer[] pictures_and_actors_easy = {R.drawable.easy_01, R.drawable.easy_02, R.drawable.easy_03, R.drawable.easy_04, R.drawable.easy_05, R.drawable.easy_06,
+                R.drawable.easy_1, R.drawable.easy_2, R.drawable.easy_3, R.string.easy_1, R.string.easy_2, R.string.easy_3};
+        movie.setPicturesActors(pictures_and_actors_easy);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_lion_king), getString(R.string.genre_an), 1994, R.drawable.lion_king, R.string.general_description);
+        movie = new Movie(getString(R.string.title_lion_king), getString(R.string.genre_an), 1994, R.drawable.lion_king, R.string.des_lion);
+        Integer[] pictures_and_actors_lion = {R.drawable.lion_01, R.drawable.lion_02, R.drawable.lion_03, R.drawable.lion_04, R.drawable.lion_05, R.drawable.lion_06,
+                R.drawable.lion_1, R.drawable.lion_2, R.drawable.lion_3, R.string.lion_1, R.string.lion_2, R.string.lion_3};
+        movie.setPicturesActors(pictures_and_actors_lion);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_up), getString(R.string.genre_an_ad_co), 2009, R.drawable.up, R.string.general_description);
+        movie = new Movie(getString(R.string.title_up), getString(R.string.genre_an_ad_co), 2009, R.drawable.up, R.string.des_up);
+        Integer[] pictures_and_actors_up = {R.drawable.up_01, R.drawable.up_02, R.drawable.up_03, R.drawable.up_04, R.drawable.up_05, R.drawable.up_06,
+                R.drawable.up_1, R.drawable.up_2, R.drawable.up_3, R.string.up_1, R.string.up_2, R.string.up_3};
+        movie.setPicturesActors(pictures_and_actors_up);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_inside_out), getString(R.string.genre_an_co), 2015, R.drawable.inside_out, R.string.general_description);
+        movie = new Movie(getString(R.string.title_inside_out), getString(R.string.genre_an_co), 2015, R.drawable.inside_out, R.string.des_inside_out);
+        Integer[] pictures_and_actors_io = {R.drawable.io_01, R.drawable.io_02, R.drawable.io_03, R.drawable.io_04, R.drawable.io_05, R.drawable.io_06,
+                R.drawable.io_1, R.drawable.io_2, R.drawable.io_3, R.string.io_1, R.string.io_2, R.string.io_3};
+        movie.setPicturesActors(pictures_and_actors_io);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_asterix), getString(R.string.genre_ad_co), 2002, R.drawable.asterix_obelix, R.string.general_description);
+        movie = new Movie(getString(R.string.title_asterix), getString(R.string.genre_ad_co), 2002, R.drawable.asterix_obelix, R.string.des_asterix_obelix);
+        Integer[] pictures_and_actors_as_ob = {R.drawable.as_ob_01, R.drawable.as_ob_02, R.drawable.as_ob_03, R.drawable.as_ob_04, R.drawable.as_ob_05, R.drawable.as_ob_06,
+                R.drawable.as_ob_1, R.drawable.as_ob_2, R.drawable.as_ob_3, R.string.as_ob_1, R.string.as_ob_2, R.string.as_ob_3};
+        movie.setPicturesActors(pictures_and_actors_as_ob);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_httyd), getString(R.string.genre_ad_co), 2002, R.drawable.dragon, R.string.general_description);
+        movie = new Movie(getString(R.string.title_httyd), getString(R.string.genre_an_ad_fa), 2010, R.drawable.dragon, R.string.des_hhtyd);
+        Integer[] pictures_and_actors_httyd = {R.drawable.httyd_01, R.drawable.httyd_04, R.drawable.httyd_06, R.drawable.httyd_02, R.drawable.httyd_05, R.drawable.httyd_03,
+                R.drawable.httyd_1, R.drawable.httyd_2, R.drawable.httyd_3, R.string.httyd_1, R.string.httyd_2, R.string.httyd_3};
+        movie.setPicturesActors(pictures_and_actors_httyd);
         movieList.add(new Model(Model.RIGHT_SIDE, movie));
 
-        movie = new Movie(getString(R.string.title_legally_blonde), getString(R.string.genre_ad_co), 2002, R.drawable.legally_blond, R.string.general_description);
+        movie = new Movie(getString(R.string.title_legally_blonde), getString(R.string.genre_ad_co), 2002, R.drawable.legally_blond, R.string.des_legally_blonde);
+        Integer[] pictures_and_actors_legally = {R.drawable.legally_01, R.drawable.legally_02, R.drawable.legally_03, R.drawable.legally_04, R.drawable.legally_05, R.drawable.legally_06,
+                R.drawable.legally_1, R.drawable.legally_2, R.drawable.legally_3, R.string.legally_1, R.string.legally_2, R.string.legally_3};
+        movie.setPicturesActors(pictures_and_actors_legally);
         movieList.add(new Model(Model.LEFT_SIDE, movie));
 
         for (int i=0; i<movieList.size();i++)

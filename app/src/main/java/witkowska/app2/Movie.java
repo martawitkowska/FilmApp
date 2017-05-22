@@ -33,16 +33,24 @@ public class Movie implements Serializable {
         pictures_actors = new Integer[12];
     }
 
-    public Movie (String title, String genre, int year, int pic_resource, int desc_resource, float rating) {
-        this.title = title;
-        this.genre = genre;
-        this.year = year;
-        this.pic_resource = pic_resource;
-        this.desc_resource = desc_resource;
-        this.rating = rating;
-        //eye_resource = R.drawable.empty;
-        has_been_seen = true;
-        pictures_actors = new Integer[12];
+//    public Movie (String title, String genre, int year, int pic_resource, int desc_resource, float rating) {
+//        this.title = title;
+//        this.genre = genre;
+//        this.year = year;
+//        this.pic_resource = pic_resource;
+//        this.desc_resource = desc_resource;
+//        this.rating = rating;
+//        //eye_resource = R.drawable.empty;
+//        has_been_seen = true;
+//        pictures_actors = new Integer[12];
+//    }
+
+    public Movie clone () {
+        Movie new_movie = new Movie(title, genre, year, pic_resource, desc_resource);
+        new_movie.has_been_seen = has_been_seen;
+        new_movie.rating = rating;
+        new_movie.pictures_actors = pictures_actors;
+        return new_movie;
     }
 
     public String getTitle() { return title; }

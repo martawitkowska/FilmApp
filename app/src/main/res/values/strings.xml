@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Films</string>
     <string name="action_settings">Settings</string>
+    <string name="genre">Genre:</string>
+    <string name="year">Year:</string>
+    <string name="rating">Rating:</string>
+    <string name="des">Description:</string>
+    <string name="click_info">To see more film clips, click on the photo above</string>
+
 
     <!-- Toasts -->
     <string name="to_see_true">Have you already seen this movie?\nRate it!</string>
@@ -13,20 +19,17 @@
     <string name="title_csl">Crazy, Stupid, Love</string>
     <string name="title_httyd">How to train your dragon 2</string>
     <string name="title_hercules">Hercules</string>
-    <string name="title_pitch_perfect">Pitch Perfect 2</string>
     <string name="title_el_dorado">The Road to El Dorado</string>
     <string name="title_godfather">Godfather</string>
     <string name="title_zoo">Zootopia</string>
     <string name="title_hoc">House of Cards (series)</string>
     <string name="title_legally_blonde">Legally Blonde</string>
-    <string name="title_mulan">Mulan</string>
     <string name="title_narnia">The Chronicles of Narnia: The Lion, the Witch and the Wardrobe</string>
     <string name="title_easy_a">Easy A</string>
     <string name="title_lion_king">Lion King</string>
     <string name="title_up">Up</string>
-    <string name="title_treasure">Treasure Planet</string>
     <string name="title_inside_out">Inside out</string>
-    <string name="title_asterix">Asterix and Obelix: Mission Cleopatre</string>
+    <string name="title_asterix">Asterix and Obelix meet Cleopatre</string>
     <string name="title_shrek">Shrek 2</string>
     <string name="title_moana">Moana</string>
     <string name="title_big_hero_6">Big Hero 6</string>
@@ -67,24 +70,71 @@
     <string name="des_pitch_perfect">The Bellas are back, and they are better than ever. After being humiliated in front of none other than the President of the United States of America, the Bellas are taken out of the Aca-Circuit. In order to clear their name, and regain their status, the Bellas take on a seemingly impossible task: winning an international competition no American team has ever won. In order to accomplish this monumental task, they need to strengthen the bonds of friendship and sisterhood and blow away the competition with their amazing aca-magic! With all new friends and old rivals tagging along for the trip, the Bellas can hopefully accomplish their dreams.</string>
     <string name="des_moana">In Ancient Polynesia, when a terrible curse incurred by Maui reaches an impetuous Chieftain daughter island, she answers the Ocean call to seek out the demigod to set things right.</string>
     <string name="des_big_hero_6">The special bond that develops between plus-sized inflatable robot Baymax, and prodigy Hiro Hamada, who team up with a group of friends to form a band of high-tech heroes.</string>
-    <string name="des_"></string>
+    <string name="des_godfather">The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.</string>
+    <string name="des_el_dorado">Two swindlers get their hands on a map to the fabled city of gold, El Dorado.</string>
+    <string name="des_hoc">A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.</string>
+    <string name="des_narnia">Four kids travel through a wardrobe to the land of Narnia and learn of their destiny to free it with the guidance of a mystical lion.</string>
+    <string name="des_easy">A clean-cut high school student relies on the school rumor mill to advance her social and financial standing.</string>
+    <string name="des_lion">Lion cub and future king Simba searches for his identity. His eagerness to please others and penchant for testing his boundaries sometimes gets him into trouble.</string>
+    <string name="des_up">Seventy-eight year old Carl Fredricksen travels to Paradise Falls in his home equipped with balloons, inadvertently taking a young stowaway.</string>
+    <string name="des_inside_out">After young Riley is uprooted from her Midwest life and moved to San Francisco, her emotions - Joy, Fear, Anger, Disgust and Sadness - conflict on how best to navigate a new city, house, and school.</string>
+    <string name="des_asterix_obelix">Astérix and Obélix go to Egypt to help architect Numérobis who is building a palace for Cleopatra.</string>
+    <string name="des_hhtyd">A hapless young Viking who aspires to hunt dragons becomes the unlikely friend of a young dragon himself, and learns there may be more to the creatures than he assumed.</string>
+    <string name="des_legally_blonde">Elle Woods, a fashionable sorority queen is dumped by her boyfriend. She decides to follow him to law school, while she is there she figures out that there is more to her than just looks.</string>
+
 
     <!-- Film actors -->
-    <string name="narnia_1"></string>
-    <string name="narnia_2"></string>
-    <string name="narnia_3"></string>
+    <string name="narnia_1">Lucy Pevensie\n(Georgie Henley)</string>
+    <string name="narnia_2">Peter Pevensie\n(William Moseley)</string>
+    <string name="narnia_3">Susan Pevensie\n(Anna Popplewell)</string>
     <string name="csl_1">Hannah\n(Emma Stone)</string>
     <string name="csl_2">Cal Weaver\n(Steve Carell)</string>
     <string name="csl_3">Jacob Palmer\n(Ryan Gosling)</string>
     <string name="big_hero_1">Tadashi\n(Daniel Henney)</string>
     <string name="big_hero_2">Hiro\n(Ryan Potter)</string>
     <string name="big_hero_3">Fred\n(T.J. Miller)</string>
-
-
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="walle_1">WALLE\n(Ben Burtt)</string>
+    <string name="walle_2">EVE\n(Elissa Knight)</string>
+    <string name="walle_3">Captain\n(Jeff Garlin)</string>
+    <string name="moana_1">Moana\n(Aulii Cravalho)</string>
+    <string name="moana_2">Maui\n(Dwayne Johnson)</string>
+    <string name="moana_3">Hey Hey</string>
+    <string name="hercules_1">Hercules\n(Tate Donovan)</string>
+    <string name="hercules_2">Phil\n(Danny DeVito)</string>
+    <string name="hercules_3">Megan\n(Susan Egan)</string>
+    <string name="el_dorado_1">Miguel\n(Kenneth Branagh)</string>
+    <string name="el_dorado_2">Tulio\n(Kevin Kline)</string>
+    <string name="el_dorado_3">Tannabok\n(Edward James Olmos)</string>
+    <string name="gf_1">Don Vito Corleone\n(Marlon Brando)</string>
+    <string name="gf_2">Michael Corleone\n(Al Pacino)</string>
+    <string name="gf_3">Peter Clemenza\n(Richard S. Castellano)</string>
+    <string name="zoo_1">Judy Hopps\n(Ginnifer Goodwin)</string>
+    <string name="zoo_2">Nick Wilde\n(Jason Bateman)</string>
+    <string name="zoo_3">Clawhauser\n(Nate Torrence)</string>
+    <string name="hoc_1">Francis Underwood\n(Kevin Spacey)</string>
+    <string name="hoc_2">Claire Underwood\n(Robin Wright)</string>
+    <string name="hoc_3">Rachel Posner\n(Rachel Brosnahan)</string>
+    <string name="easy_1">Olive Penderghast\n(Emma Stone)</string>
+    <string name="easy_2">Todd\n(Penn Badgley)</string>
+    <string name="easy_3">Marianne\n(Amanda Bynes)</string>
+    <string name="lion_1">Simba\n(Jonathan Thomas)</string>
+    <string name="lion_2">Nala\n(Niketa Calame)</string>
+    <string name="lion_3">Rafiki\n(Robert Guillaume)</string>
+    <string name="up_1">Carl Fredricksen\n(Edward Asner)</string>
+    <string name="up_2">Russel\n(Jordan Nagai)</string>
+    <string name="up_3">El\n(Elie Docter)</string>
+    <string name="io_1">Riley\n(Kaitlyn Dias)</string>
+    <string name="io_2">Mother\n(Diane Lane)</string>
+    <string name="io_3">Father\n(Kyle MacLachlan)</string>
+    <string name="as_ob_1">Asterix\n(Christian Clavier)</string>
+    <string name="as_ob_2">Obelix\n(Gérard Depardieu)</string>
+    <string name="as_ob_3">Panoramix\n(Claude Rich)</string>
+    <string name="httyd_1">Hiccup\n(Jay Baruchel)</string>
+    <string name="httyd_2">Stoick\n(Gerard Butler)</string>
+    <string name="httyd_3">Snotlout\n(Jonah Hill)</string>
+    <string name="legally_1">Elle Woods\n(Reese Witherspoon)</string>
+    <string name="legally_2">Warner Huntington III\n(Matthew Davis)</string>
+    <string name="legally_3">Vivian Kensington\n(Luke Wilson)</string>
 
 
 </resources>

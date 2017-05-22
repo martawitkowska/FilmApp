@@ -63,7 +63,7 @@ public class DescriptionActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             fragment_two = savedInstanceState.getBoolean("Fragment");
             saved_rating = savedInstanceState.getFloat("SavedRating");
-            Toast.makeText(getApplicationContext(), "onCreate() in DesActivity\nFragment = " + String.valueOf(fragment_two), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "onCreate() in DesActivity\nFragment = " + String.valueOf(fragment_two), Toast.LENGTH_SHORT).show();
 
             if (fragment_two)
                 startFragmentTwoAndThree();
@@ -191,7 +191,7 @@ public class DescriptionActivity extends AppCompatActivity {
             outState.putFloat("SavedRating", saved_rating);
 //        outState.putInt("Position", position);
 //        movie_data.putSerializable("Movies", (Serializable)movieList);
-        Toast.makeText(getApplicationContext(), "onSaveInstant() in DesActivity", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "onSaveInstant() in DesActivity", Toast.LENGTH_SHORT).show();
     }
 
 //    @Override
